@@ -22,12 +22,19 @@ Product.init({
     allowNull: false
   },
   price: {
-    type: DataTypes.DECIMAL(5, 2),
-    allowNull: false
+    type: DataTypes.DECIMAL(6, 2),
+    allowNull: false,
+    validate: {
+      isDecimal: true,
+    }
   },
   stock: {
     type: DataTypes.INTEGER,
-    allowNull: false
+    allowNull: false,
+    default: 10,
+    validate: {
+      isNumeric: true,
+    }
   },
   // stores a reference of the 'id' of the 'category' that this product fits in
   category_id: {
